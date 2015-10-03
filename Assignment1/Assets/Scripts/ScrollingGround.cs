@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿//Source File: ScrollingGround
+//Author: Franco Chong
+//Date Modified: September 23, 2015
+//Program Description: Controls the program's background in order for it to move and scroll in one direction.
+
+
+using UnityEngine;
 using System.Collections;
 
 public class ScrollingGround : MonoBehaviour {
 	// public instanced variables
 
-	public float speed; //this will be used to determine the speed of the movement of the background
+	//this will be used to determine the speed of the movement of the background
+	public float speed; 
 	
 	// Use this for initialization
 	void Start () {
@@ -19,7 +26,7 @@ public class ScrollingGround : MonoBehaviour {
 		curPosition = gameObject.GetComponent<Transform> ().position;
 		curPosition.y -= speed;
 		
-		// the game object is moved to the current position
+		// the object is called to be moved
 		gameObject.GetComponent<Transform> ().position = curPosition;
 		
 		// checks the boundary in order for it to reset
@@ -28,7 +35,7 @@ public class ScrollingGround : MonoBehaviour {
 		}
 	}
 	
-	// Resets the background
+	// Resets the background to a certain position.
 	private void Reset() {
 		Vector2 resPosition = new Vector2 (0.0f, 6f);
 		gameObject.GetComponent<Transform> ().position = resPosition;

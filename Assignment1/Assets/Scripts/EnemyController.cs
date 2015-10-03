@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿//Source File: EnemyController
+//Author: Franco Chong
+//Date Modified: September 23, 2015
+//Program Description: Controls the enemy position and speed.
+
+
+using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
@@ -13,36 +19,36 @@ public class Boundary{
 
 
 public class EnemyController : MonoBehaviour {
-	// PUBLIC INSTANCE VARIABLES
+	// public variables
 	public Speed speed;
 	public Boundary boundary;
 	
-	//private instance variables
-	private float _CurrentSpeed;
+	//private variables
+	private float curSpeed;
 	
 	// Use this for initialization
 	void Start () {
-		this._Reset ();
+		this.Reset ();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Vector2 currentPosition = gameObject.GetComponent<Transform> ().position;		 
-		currentPosition.y -= this._CurrentSpeed;
+		currentPosition.y -= this.curSpeed;
 		
-		// move the gameObject to the currentPosition
+		// move to the currentPosition
 		gameObject.GetComponent<Transform> ().position = currentPosition;
 		
-		// top boundary check - gameObject meets top of camera viewport
+		// checks the boundary.
 		if (currentPosition.y <= boundary.yMin) {
-			this._Reset();
+			this.Reset();
 		}
 	}
 	
 	// Resets the gameObject
-	private void _Reset() {
-		this._CurrentSpeed = Random.Range (speed.minSpeed, speed.maxSpeed);
+	private void Reset() {
+		this.curSpeed = Random.Range (speed.minSpeed, speed.maxSpeed);
 		Vector2 resetPosition = new Vector2 (Random.Range (boundary.xMin,boundary.xMax), boundary.yMax);
 		gameObject.GetComponent<Transform> ().position = resetPosition;
 	}

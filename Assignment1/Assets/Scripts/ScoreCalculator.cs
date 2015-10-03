@@ -21,4 +21,12 @@ public class ScoreCalculator : MonoBehaviour {
 		this.scoreLabel.text = "Score: " + this.scoreCount;
 	}
 
+	void OnTriggerEnter2D(Collider2D otherObjects){
+		if (otherObjects.tag == "Enemy") {
+			this.scoreCount += 10;
+			Destroy(otherObjects.gameObject);
+		}
+		this.setScore ();		
+	}
+
 }
