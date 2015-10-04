@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿//Source File: DetroyingCollider
+//Author: Franco Chong
+//Date Modified: September 25, 2015
+//Program Description: Destroys each game object when conditions are met.
+
+
+using UnityEngine;
 using System.Collections;
 
 public class DestroyingCollider : MonoBehaviour {
@@ -18,6 +24,7 @@ public class DestroyingCollider : MonoBehaviour {
 		
 	}
 
+	//Destroys certain objects when a condition is met.
 	void OnTriggerEnter2D(Collider2D otherObjects){
 		if (otherObjects.tag == "Player") {
 			Destroy(gameObject);

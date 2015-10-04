@@ -1,9 +1,17 @@
-﻿using UnityEngine;
+﻿//Source File: ScoreCalculator
+//Author: Franco Chong
+//Date Modified: October 2, 2015
+//Program Description: Set the lives that the player have.
+
+
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
 public class ScoreCalculator : MonoBehaviour {
 
+	//public instance variables
 	public Text scoreLabel;
 	public int scoreCount =0;
 
@@ -17,10 +25,12 @@ public class ScoreCalculator : MonoBehaviour {
 	
 	}
 
+	//sets the score the player achieved.
 	private void setScore(){
 		this.scoreLabel.text = "Score: " + this.scoreCount;
 	}
 
+	//adds the score when an enemy object is destroyed.
 	void OnTriggerEnter2D(Collider2D otherObjects){
 		if (otherObjects.tag == "Enemy") {
 			this.scoreCount += 10;

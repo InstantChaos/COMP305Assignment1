@@ -14,6 +14,7 @@ public class LifeCalculator : MonoBehaviour {
 	public int livescount = 5;
 
 	public Text GOLabel;
+	private bool startagain;
 
 
 	// Use this for initialization
@@ -24,6 +25,7 @@ public class LifeCalculator : MonoBehaviour {
 
 		//turns off the gameover text until conditions are met
 		this.GOLabel.enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -36,7 +38,6 @@ public class LifeCalculator : MonoBehaviour {
 		this.livesLabel.text = "Lives: " + this.livescount;
 	}
 	
-
 	//Lives will be deducted upon sensing a collision.
 	void OnTriggerEnter2D(Collider2D otherObjects){
 		if (otherObjects.tag == "Enemy") {
@@ -46,7 +47,8 @@ public class LifeCalculator : MonoBehaviour {
 		//Destroys the player and display game over text when player's lives reach 0.
 		if(this.livescount <=0){
 			this.GOLabel.enabled = true;
-			Destroy(gameObject);		
+			Destroy(gameObject);
+
 		}
 		this.setLives ();		
 	}

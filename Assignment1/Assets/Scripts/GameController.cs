@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour {
 	public float spawn;
 	public Vector2 spawnrate;
 	
-	
+	public LifeCalculator LF;
+
 	// Use this for initialization
 	void Start () {
 		//this._GenerateTank ();
@@ -26,7 +27,7 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	//sets the position of the enemy tank objects for the game to use.
@@ -39,7 +40,7 @@ public class GameController : MonoBehaviour {
 				
 				Instantiate (enemytank, spawnPosition, spawnRotation);
 				yield return new WaitForSeconds (spawn);
-				                     
+				  
 			}
 		}
 	}
