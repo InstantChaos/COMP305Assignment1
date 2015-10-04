@@ -4,7 +4,7 @@ using System.Collections;
 public class DestroyingCollider : MonoBehaviour {
 
 	private AudioSource EnemyDyingSound;
-
+	
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +27,7 @@ public class DestroyingCollider : MonoBehaviour {
 			Destroy(otherObjects.gameObject);
 			Destroy (gameObject);
 			this.EnemyDyingSound.Play ();
+
 		}
 	}
 }

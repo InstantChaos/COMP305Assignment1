@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿//Source File: PlayerController
+//Author: Franco Chong
+//Date Modified: September 23, 2015
+//Program Description: Controls the player object for it to move around and fire a bullet object.
+
+
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
