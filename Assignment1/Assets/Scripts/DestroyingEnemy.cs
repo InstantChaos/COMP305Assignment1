@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿//Source File: DestroyingEnemy
+//Author: Franco Chong
+//Date Modified: September 25, 2015
+//Program Description: Destroys the enemy object when it collides with this object.
+
+
+
+using UnityEngine;
 using System.Collections;
 
 public class DestroyingEnemy : MonoBehaviour {
@@ -13,6 +20,7 @@ public class DestroyingEnemy : MonoBehaviour {
 	
 	}
 
+	//Destroys the enemy object upon collision.
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Enemy") {
 			Destroy (other.gameObject);

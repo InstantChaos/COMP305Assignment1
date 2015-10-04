@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour {
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float fireRate;
-	private float nextFire;
+	private float nextShot;
 	
 	//private instance variables
-	private Vector2 _newPosition = new Vector2 (0.0f, 0.0f);
+	private Vector2 newPos = new Vector2 (0.0f, 0.0f);
 	
 	// Use this for initialization
 	void Start () {
@@ -21,9 +21,10 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this._CheckInput ();
-		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
-			nextFire = Time.time + fireRate;
+		//checks the input for the player to fire a bullet object.
+		this.CheckInput ();
+		if (Input.GetButton ("Fire1") && Time.time > nextShot) {
+			nextShot = Time.time + fireRate;
 			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 		}
 	}
@@ -31,30 +32,34 @@ public class PlayerController : MonoBehaviour {
 
 
 
-	private void _CheckInput(){
-		this._newPosition = gameObject.GetComponent<Transform> ().position; //current position
-		
+	private void CheckInput(){
+		//current position of the player object
+		this.newPos = gameObject.GetComponent<Transform> ().position; 
+
+		//adds speed to the current position
 		if (Input.GetAxis ("Horizontal") > 0) {
-			_newPosition.x += this.speed;//add movee value to current position
+			newPos.x += this.speed;
 			
 		}
+		//subtract speed from the current position
 		if (Input.GetAxis ("Horizontal") < 0) {
-			_newPosition.x -= this.speed;//subtract movee value to current position
+			newPos.x -= this.speed;
 			
 		}
 		
-		this._BoundaryCheck ();
+		this.BoundaryCheck ();
 		
-		gameObject.GetComponent<Transform>().position = this._newPosition;
+		gameObject.GetComponent<Transform>().position = this.newPos;
 	}
-	
-	private void _BoundaryCheck(){
-		if (this._newPosition.x < this.boundary.xMin) {
-			this._newPosition.x = this.boundary.xMin;
+
+	//checks the boundary of the position so that it does not go off the screen.
+	private void BoundaryCheck(){
+		if (this.newPos.x < this.boundary.xMin) {
+			this.newPos.x = this.boundary.xMin;
 		}
 		
-		if (this._newPosition.x > this.boundary.xMax) {
-			this._newPosition.x = this.boundary.xMax;
+		if (this.newPos.x > this.boundary.xMax) {
+			this.newPos.x = this.boundary.xMax;
 		}
 	}
 	

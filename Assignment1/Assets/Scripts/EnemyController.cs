@@ -7,6 +7,7 @@
 using UnityEngine;
 using System.Collections;
 
+//Re-usable codes
 [System.Serializable]
 public class Speed{
 	public float minSpeed, maxSpeed;
@@ -37,7 +38,7 @@ public class EnemyController : MonoBehaviour {
 		Vector2 currentPosition = gameObject.GetComponent<Transform> ().position;		 
 		currentPosition.y -= this.curSpeed;
 		
-		// move to the currentPosition
+		// move to the current position
 		gameObject.GetComponent<Transform> ().position = currentPosition;
 		
 		// checks the boundary.
