@@ -20,7 +20,7 @@ public class DestroyingEnemy : MonoBehaviour {
 	
 	}
 
-	//Destroys the enemy object upon collision.
+	//Destroys the enemy object/item upon collision.
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Enemy") {
 			Destroy (other.gameObject);
