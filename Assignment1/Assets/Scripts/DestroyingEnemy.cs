@@ -25,6 +25,9 @@ public class DestroyingEnemy : MonoBehaviour {
 		if (other.tag == "Enemy") {
 			Destroy (other.gameObject);
 		}
+		if (other.tag == "MedPack") {
+			Destroy (other.gameObject);
+		}
 		
 	}
 }

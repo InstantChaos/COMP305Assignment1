@@ -14,8 +14,12 @@ public class GameController : MonoBehaviour {
 	public float start;
 	public float spawn;
 	public Vector2 spawnrate;
+	public float itemstart;
+	public float itemspawn;
+	public Vector2 itemSpawnrate;
+	public int itemCount;
+	public GameObject itempickup;
 	
-	public LifeCalculator LF;
 
 	// Use this for initialization
 	void Start () {
@@ -42,9 +46,17 @@ public class GameController : MonoBehaviour {
 				yield return new WaitForSeconds (spawn);
 				  
 			}
+			for (int i=0; i<itemCount; i++) {
+				Vector2 spawnPosition = new Vector2 (Random.Range (-itemSpawnrate.x, itemSpawnrate.x), itemSpawnrate.y);
+				Quaternion spawnRotation = Quaternion.Euler(0,0,270);
+				
+				Instantiate (itempickup, spawnPosition, spawnRotation);
+				yield return new WaitForSeconds (itemspawn);
+				
+			}
 		}
 	}
-
+	
 		//generate enemy tanks
 //	private void _GenerateTank(){
 //		for (int count =0; count < this.TankCount; count++) {

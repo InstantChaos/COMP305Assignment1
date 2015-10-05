@@ -30,11 +30,15 @@ public class ScoreCalculator : MonoBehaviour {
 		this.scoreLabel.text = "Score: " + this.scoreCount;
 	}
 
-	//adds the score when an enemy object is destroyed.
+	//adds the score when an enemy object is destroyed or an item is picked up.
 	void OnTriggerEnter2D(Collider2D otherObjects){
 		if (otherObjects.tag == "Enemy") {
-			this.scoreCount += 10;
+			this.scoreCount -= 50;
 			Destroy(otherObjects.gameObject);
+		}
+		if (otherObjects.tag == "MedPack") {
+			this.scoreCount +=100;
+			Destroy (otherObjects.gameObject);
 		}
 		this.setScore ();		
 	}
