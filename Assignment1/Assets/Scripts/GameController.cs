@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		//this._GenerateTank ();
 
-		//this will call the spawnwaves method for the program to spawn the enemy tanks object.
+		//this will call the spawnwaves method for the program to spawn the enemy tanks/ pick up object.
 		StartCoroutine (SpawnWaves ());
 	}
 	
@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	//sets the position of the enemy tank objects for the game to use.
+	//sets the position of the enemy tank/ item pick up objects for the game to use.
 	IEnumerator SpawnWaves() {
 		yield return new WaitForSeconds (start);
 		while (true) {
